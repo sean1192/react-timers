@@ -57,7 +57,7 @@ class App extends Component {
                     to='/'
                     onClick={this.closeCollapse('mainNavbarCollapse')}
                   >
-                    <strong>HOME</strong>
+                    <strong>Home</strong>
                   </MDBNavLink>
                 </MDBNavItem>
 
@@ -67,7 +67,7 @@ class App extends Component {
                     to='/stopwatch'
                     onClick={this.closeCollapse('mainNavbarCollapse')}
                   >
-                    <strong>STOPWATCH</strong>
+                    <strong>Stopwatch</strong>
                   </MDBNavLink>
                 </MDBNavItem>
 
@@ -76,7 +76,7 @@ class App extends Component {
                     onClick={this.closeCollapse('mainNavbarCollapse')}
                     to='/timer'
                   >
-                    <strong>TIMER</strong>
+                    <strong>Timer</strong>
                   </MDBNavLink>
                 </MDBNavItem>
 
@@ -85,7 +85,7 @@ class App extends Component {
                     onClick={this.closeCollapse('mainNavbarCollapse')}
                     to='/pomodoro'
                   >
-                    <strong>POMODORO</strong>
+                    <strong>Pomodoro</strong>
                   </MDBNavLink>
                 </MDBNavItem>
 
@@ -94,7 +94,7 @@ class App extends Component {
                     onClick={this.closeCollapse('mainNavbarCollapse')}
                     to='/chess'
                   >
-                    <strong>CHESS</strong>
+                    <strong>Chess</strong>
                   </MDBNavLink>
                 </MDBNavItem>
 

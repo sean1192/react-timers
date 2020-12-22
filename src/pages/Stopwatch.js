@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  MDBContainer,
-  MDBEdgeHeader,
-  MDBAnimation
-//   MDBCol,
-//   MDBRow,
-} from 'mdbreact';
+import TimerContainer from '../components/TimerContainer';
 
 class Stopwatch extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
@@ -13,13 +7,7 @@ class Stopwatch extends React.Component {
   render() {
     return (
       <>
-        <MDBAnimation type='slideInUp' duration='500ms'>
-          <div className='mt-3 mb-5'>
-              <MDBContainer>
-                  Stopwatch
-              </MDBContainer>
-          </div>
-        </MDBAnimation>
+        <TimerContainer title="Stopwatch" />
       </>
     );
   }

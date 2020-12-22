@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  MDBContainer,
-  MDBAnimation,
-} from 'mdbreact';
 import './HomePage.css';
+import TimerContainer from '../components/TimerContainer';
 
 class HomePage extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
@@ -11,13 +8,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <>
-        <MDBAnimation type='slideInUp' duration='500ms'>
-          <div className='mt-3 mb-5'>
-              <MDBContainer>
-                  Home Page
-              </MDBContainer>
-          </div>
-        </MDBAnimation>
+        <TimerContainer title="Home Page" />
       </>
     );
   }

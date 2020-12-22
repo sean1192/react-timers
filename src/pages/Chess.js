@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  MDBContainer,
-  MDBAnimation
-//   MDBCol,
-//   MDBRow,
-} from 'mdbreact';
+import TimerContainer from '../components/TimerContainer';
 
 class Chess extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
@@ -12,13 +7,7 @@ class Chess extends React.Component {
   render() {
     return (
       <>
-        <MDBAnimation type='slideInUp' duration='500ms'>
-          <div className='mt-3 mb-5'>
-              <MDBContainer>
-                  Chess
-              </MDBContainer>
-          </div>
-        </MDBAnimation>
+        <TimerContainer title="Chess" />
       </>
     );
   }
