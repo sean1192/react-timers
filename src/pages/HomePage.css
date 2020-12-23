@@ -4,7 +4,6 @@
 
 .nav-link.active{
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
 }
 
 .nav-link {
@@ -16,6 +15,23 @@
 }
 
 .clockText {
-  font-size: 600%;
+  font-size: 80px;
   text-align: center;
+}
+
+.timeButton {
+  background-color: transparent;
+  border-color: transparent;
+  height: 100%;
+  width: 25px;
+}
+
+.timeLabel {
+  font-size: 1.15em;
+}
+
+.timeTitle {
+  font-size: 0.75em;
+  color: gray;
+  margin-bottom: 0px;
 }
