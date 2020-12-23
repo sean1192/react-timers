@@ -7,6 +7,7 @@ import {
   MDBCollapse,
   MDBNavItem,
   MDBNavLink,
+  MDBIcon
 } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
@@ -41,9 +42,9 @@ class App extends Component {
     return (
       <Router>
         <div className='flyout'>
-          <MDBNavbar color='green' dark expand='md' fixed='top' scrolling>
+          <MDBNavbar className="default-color" dark expand='md' fixed='top' scrolling>
             <MDBNavbarBrand className='py-0 font-weight-bold'>
-              <strong className='align-middle'>Sean's Clocks</strong>
+              <strong>React Clock </strong><MDBIcon icon='clock' />
             </MDBNavbarBrand>
             <MDBNavbarToggler
               onClick={this.toggleCollapse('mainNavbarCollapse')}

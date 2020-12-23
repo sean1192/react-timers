@@ -5,12 +5,13 @@ import {
     MDBJumbotron 
 } from 'mdbreact';
 
-const TimerContainer = ({title}) => {
+const TimerContainer = ({children}) => {
+    
   return (
-    <MDBAnimation type='slideInDown' duration='750ms'>
-        <MDBJumbotron fluid>
+    <MDBAnimation type='slideInDown' duration='500ms'>
+        <MDBJumbotron fluid className="jumboContainer">
             <MDBContainer>
-                <h2>{title}</h2>
+                {children}
             </MDBContainer>
         </MDBJumbotron>
     </MDBAnimation>

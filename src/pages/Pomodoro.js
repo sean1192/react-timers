@@ -1,5 +1,7 @@
 import React from 'react';
-import TimerContainer from '../components/TimerContainer';
+import TimerContainer from '../components/ClockContainer';
+import ClockControls from '../components/ClockControls';
+import ClockTime from '../components/ClockTime';
 
 class Pomodoro extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
@@ -7,7 +9,11 @@ class Pomodoro extends React.Component {
   render() {
     return (
       <>
-        <TimerContainer title="Pomodoro" />
+        <TimerContainer>
+          <h1>The <strong>Pomodoro Clock</strong></h1>
+          <ClockTime />
+          <ClockControls />
+        </TimerContainer>
       </>
     );
   }

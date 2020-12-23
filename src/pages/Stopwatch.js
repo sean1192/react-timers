@@ -1,5 +1,7 @@
 import React from 'react';
-import TimerContainer from '../components/TimerContainer';
+import TimerContainer from '../components/ClockContainer';
+import ClockControls from '../components/ClockControls';
+import ClockTime from '../components/ClockTime';
 
 class Stopwatch extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
@@ -7,7 +9,13 @@ class Stopwatch extends React.Component {
   render() {
     return (
       <>
-        <TimerContainer title="Stopwatch" />
+        <TimerContainer>
+          <div>
+            <h1>The <strong>Stopwatch</strong></h1>
+            <ClockTime />
+            <ClockControls />
+          </div>
+        </TimerContainer>
       </>
     );
   }
