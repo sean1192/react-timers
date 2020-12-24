@@ -5,12 +5,12 @@ import {
     MDBIcon
 } from 'mdbreact';
 
-const ClockControls = ({type, align='text-center'}) => {
+const ClockControls = (props) => {
 
-    var play = (<><MDBBtn><MDBIcon icon='play' /></MDBBtn></>);
-    var pause = (<><MDBBtn><MDBIcon icon='pause' /></MDBBtn></>);
-    var reset = (<><MDBBtn><MDBIcon icon='redo-alt' /></MDBBtn></>);
-    var resetLink = (<><a>Reset</a></>);
+    var play = (<><MDBBtn onClick={props.play}><MDBIcon icon='play' /></MDBBtn></>);
+    var pause = (<><MDBBtn onClick={props.pause}><MDBIcon icon='pause' /></MDBBtn></>);
+    var reset = (<><MDBBtn onClick={props.reset}><MDBIcon icon='redo-alt' /></MDBBtn></>);
+    var resetLink = (<><a onClick={props.reset}>Reset</a></>);
     var switchClock = (<><MDBBtn><MDBIcon icon='exchange-alt' /> Switch</MDBBtn></>);
 
     var standard = (
@@ -21,17 +21,11 @@ const ClockControls = ({type, align='text-center'}) => {
         </>
     );
 
-    var resetOnly = (
-        <>
-        {resetLink}
-        </>
-    );
-
-  return (
-    <MDBContainer className={align}>
-        {(type === 'resetOnly') ? resetOnly : (type === 'switchClock') ? switchClock : standard}
+    return (
+    <MDBContainer className={props.align}>
+        {(props.type === 'resetOnly') ? resetLink : (props.type === 'switchClock') ? switchClock : standard}
     </MDBContainer>
-  );
+    );
 };
 
 export default ClockControls;

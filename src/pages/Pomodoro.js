@@ -15,12 +15,26 @@ class Pomodoro extends React.Component {
         milliseconds: 0,
         sessionLength: 25,
         breakLength: 5,
-        clockActive: false
+        clockActive: false,
+        intervalID: null
     };
 
     this.incrementLength = this.incrementLength.bind(this);
     this.decrementLength = this.decrementLength.bind(this);
+    this.reset = this.reset.bind(this);
+  }
 
+  reset() {
+
+    if (this.state.clockActive !== true) {
+      this.setState(state=>({
+        minutes: this.state.sessionLength,
+        seconds: 0,
+        milliseconds: 0,
+        clockActive: false,
+        intervalID: null
+      }))
+    }
   }
 
   incrementLength(title) {
@@ -28,7 +42,7 @@ class Pomodoro extends React.Component {
     if (title === "Session Length") {
       var updatedMinutes = this.state.sessionLength + 1;
 
-      if (updatedMinutes <= 60) {
+      if (updatedMinutes <= 60 && !this.state.clockActive) {
         this.setState(state=>({
           sessionLength: updatedMinutes,
           minutes: updatedMinutes,
@@ -38,8 +52,8 @@ class Pomodoro extends React.Component {
       }
     }
     
-    else if (title === "Break Length") {
-      var updatedMinutes = this.state.breakLength + 1;
+    else if (title === "Break Length" && !this.state.clockActive) {
+      updatedMinutes = this.state.breakLength + 1;
 
       if (updatedMinutes <= 60) {
         this.setState(state=>({
@@ -54,7 +68,7 @@ class Pomodoro extends React.Component {
     if (title === "Session Length") {
       var updatedMinutes = this.state.sessionLength - 1;
 
-      if (updatedMinutes >= 1) {
+      if (updatedMinutes >= 1 && !this.state.clockActive) {
         this.setState(state=>({
           sessionLength: updatedMinutes,
           minutes: updatedMinutes,
@@ -65,9 +79,9 @@ class Pomodoro extends React.Component {
     }
     
     else if (title === "Break Length") {
-      var updatedMinutes = this.state.breakLength - 1;
+      updatedMinutes = this.state.breakLength - 1;
 
-      if (updatedMinutes >= 1) {
+      if (updatedMinutes >= 1 && !this.state.clockActive) {
         this.setState(state=>({
           breakLength: updatedMinutes
         }));
@@ -97,7 +111,10 @@ class Pomodoro extends React.Component {
             seconds = {this.state.seconds}
             milliseconds = {this.state.milliseconds}
           />
-          <ClockControls />
+          <ClockControls 
+            align='text-center'
+            reset={this.reset}
+          />
         </TimerContainer>
       </>
     );
