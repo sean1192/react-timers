@@ -10,18 +10,23 @@ class Pomodoro extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        minutes: 25,
+        minutes: 1,
         seconds: 0,
         milliseconds: 0,
-        sessionLength: 25,
+        sessionLength: 1,
         breakLength: 5,
         clockActive: false,
+        clockType: 'Session',
         intervalID: null
     };
 
     this.incrementLength = this.incrementLength.bind(this);
     this.decrementLength = this.decrementLength.bind(this);
     this.reset = this.reset.bind(this);
+    this.play = this.play.bind(this);
+    this.pause = this.pause.bind(this);
+    this.countdown = this.countdown.bind(this);
+    this.changeTimer = this.changeTimer.bind(this);
   }
 
   reset() {
@@ -31,8 +36,68 @@ class Pomodoro extends React.Component {
         minutes: this.state.sessionLength,
         seconds: 0,
         milliseconds: 0,
+        clockType: 'Session',
         clockActive: false,
         intervalID: null
+      }))
+    }
+  }
+
+  play() {
+    if (this.state.clockActive === false) {
+      var intervalID = setInterval(this.countdown, 1);
+      this.setState(state=>({
+        intervalID: intervalID,
+        clockActive: true
+      }))
+    }
+  }
+
+  pause() {
+    if (this.state.clockActive) {
+      clearInterval(this.state.intervalID);
+      this.setState(state=>({
+        clockActive: false
+      }))
+    }
+  }
+
+  countdown() {
+    var secs = this.state.seconds;
+    var mins = this.state.minutes;
+    var msecs = this.state.milliseconds;
+
+    // Stop time at 0
+    if(msecs === 0 && secs === 0 && mins === 0) {
+      this.pause();
+      this.alarmSound.play();
+      this.changeTimer();
+      this.play();
+    } else {
+
+      // Otherwise update each time variable
+      if (msecs === 0) {
+        if (secs > 0) {
+          msecs = 99;
+          secs --;
+        } else if (mins > 0) {
+          msecs = 99;
+        }
+      } else {
+        msecs --;
+      }
+  
+      if (secs === 0) {
+        if (mins > 0) {
+          secs = 59;
+          mins --;
+        }
+      }
+  
+      this.setState(state=>({
+        minutes: mins,
+        seconds: secs,
+        milliseconds: msecs
       }))
     }
   }
@@ -89,6 +154,24 @@ class Pomodoro extends React.Component {
     }
   }
 
+  changeTimer() {
+    if (this.state.clockType === 'Session') {
+      this.setState(state=>({
+        minutes: this.state.breakLength,
+        seconds: 0,
+        milliseconds: 0,
+        clockType: 'Break'
+      }))
+    } else if (this.state.clockType === 'Break') {
+      this.setState(state=>({
+        minutes: this.state.sessionLength,
+        seconds: 0,
+        milliseconds: 0,
+        clockType: 'Session'
+      }))
+    }
+  }
+
   render() {
     return (
       <>
@@ -106,16 +189,28 @@ class Pomodoro extends React.Component {
             increment = {this.incrementLength}
             decrement = {this.decrementLength}
           />
+          <div className='text-center'>{this.state.clockType}</div>
           <ClockTime 
             minutes = {this.state.minutes}
             seconds = {this.state.seconds}
             milliseconds = {this.state.milliseconds}
+            redText = {true}
           />
           <ClockControls 
             align='text-center'
             reset={this.reset}
+            play={this.play}
+            pause={this.pause}
           />
         </TimerContainer>
+        <audio
+            id="alarmSound"
+            preload="auto"
+            ref={(audio) => {
+                this.alarmSound = audio;
+            }}
+            src="http://soundbible.com/grab.php?id=2062&type=wav"
+        />
       </>
     );
   }
