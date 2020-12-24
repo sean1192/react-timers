@@ -28,6 +28,10 @@ class Pomodoro extends React.Component {
     this.countdown = this.countdown.bind(this);
     this.changeTimer = this.changeTimer.bind(this);
   }
+  
+  componentWillUnmount() {
+    this.pause();
+  }
 
   reset() {
 

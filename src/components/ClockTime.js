@@ -24,10 +24,17 @@ const ClockTime = (props) => {
 
   // Apply optional red text if mins < 1
   let textStyle = {}
-  if (props.redText && props.minutes < 1) {
-    textStyle = {
-      color: 'darkred'
-    }
+  if (props.redText) {
+
+    if (props.minutes === 0 && props.seconds === 0 && props.milliseconds === 0) {
+      textStyle = {
+        color: 'red'
+      }
+    } else if (props.minutes < 1) {
+        textStyle = {
+          color: 'darkred'
+        }
+      }
   }
 
   return (

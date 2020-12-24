@@ -11,7 +11,7 @@ const ClockControls = (props) => {
     var pause = (<><MDBBtn onClick={props.pause}><MDBIcon icon='pause' /></MDBBtn></>);
     var reset = (<><MDBBtn onClick={props.reset}><MDBIcon icon='redo-alt' /></MDBBtn></>);
     var resetLink = (<><a onClick={props.reset}>Reset</a></>);
-    var switchClock = (<><MDBBtn><MDBIcon icon='exchange-alt' /> Switch</MDBBtn></>);
+    var switchClock = (<><MDBBtn onClick={props.switchClock}><MDBIcon icon='exchange-alt' /> Switch</MDBBtn></>);
 
     var standard = (
         <>
