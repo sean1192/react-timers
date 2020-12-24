@@ -68,31 +68,31 @@ class Timer extends React.Component {
     if(msecs === 0 && secs === 0 && mins === 0) {
       this.pause();
       this.alarmSound.play();
-    }
-
-    if (msecs === 0) {
-      if (secs > 0) {
-        msecs = 99;
-        secs --;
-      } else if (mins > 0) {
-        msecs = 99;
-      }
     } else {
-      msecs --;
-    }
-
-    if (secs === 0) {
-      if (mins > 0) {
-        secs = 59;
-        mins --;
+      if (msecs === 0) {
+        if (secs > 0) {
+          msecs = 99;
+          secs --;
+        } else if (mins > 0) {
+          msecs = 99;
+        }
+      } else {
+        msecs --;
       }
+  
+      if (secs === 0) {
+        if (mins > 0) {
+          secs = 59;
+          mins --;
+        }
+      }
+  
+      this.setState(state=>({
+        minutes: mins,
+        seconds: secs,
+        milliseconds: msecs
+      }))
     }
-
-    this.setState(state=>({
-      minutes: mins,
-      seconds: secs,
-      milliseconds: msecs
-    }))
   }
 
   incrementLength() {
