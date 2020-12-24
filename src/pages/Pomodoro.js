@@ -10,10 +10,10 @@ class Pomodoro extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        minutes: 1,
+        minutes: 25,
         seconds: 0,
         milliseconds: 0,
-        sessionLength: 1,
+        sessionLength: 25,
         breakLength: 5,
         clockActive: false,
         clockType: 'Session',
@@ -45,7 +45,7 @@ class Pomodoro extends React.Component {
 
   play() {
     if (this.state.clockActive === false) {
-      var intervalID = setInterval(this.countdown, 1);
+      var intervalID = setInterval(this.countdown, 10);
       this.setState(state=>({
         intervalID: intervalID,
         clockActive: true

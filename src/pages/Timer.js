@@ -10,10 +10,10 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        minutes: 1,
+        minutes: 25,
         seconds: 0,
         milliseconds: 0,
-        timerLength: 1,
+        timerLength: 25,
         clockActive: false,
         intervalID: null
     };
